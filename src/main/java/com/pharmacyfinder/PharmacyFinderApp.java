@@ -5,8 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import java.awt.Desktop;
-import java.net.URI;
 
 public class PharmacyFinderApp extends Application {
 
@@ -25,18 +23,14 @@ public class PharmacyFinderApp extends Application {
         primaryStage.setMinWidth(800);
         primaryStage.setMinHeight(600);
 
-        // Set application icon
-        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/images/pharmacy-icon.png")));
+        // Set application icon (commented out until icon is available)
+        // primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/images/pharmacy-icon.png")));
 
         // Show the primary stage
         primaryStage.show();
-
-        // Launch the external browser
-        if (Desktop.isDesktopSupported()) {
-            Desktop desktop = Desktop.getDesktop();
-            URI uri = new URI("http://your-url.com"); // Replace with the URL you want to open
-            desktop.browse(uri);
-        }
+        
+        // Focus on the application window
+        primaryStage.toFront();
     }
 
     public static void main(String[] args) {

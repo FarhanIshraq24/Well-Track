@@ -44,3 +44,12 @@ const globalStyles = `
     font-size: 1.1em;
   }
 `;
+
+// Inject global styles
+const styleElement = document.createElement('style');
+styleElement.textContent = globalStyles;
+document.head.appendChild(styleElement);
+
+// Create root and render app
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);

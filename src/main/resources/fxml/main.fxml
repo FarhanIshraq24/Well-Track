@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.web.WebView?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.geometry.Insets?>
 
 <VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.pharmacyfinder.controller.MainController">
-    <Label text="Pharmacy Finder - Working!" />
+      fx:controller="com.pharmacyfinder.HelloController" spacing="10">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10" />
+    </padding>
+    
+    <HBox spacing="10" alignment="CENTER">
+        <Label text="🏥 Pharmacy Finder - JavaFX Desktop Application" styleClass="title-label" />
+        <Button text="Open Web Interface" onAction="#onOpenWebInterface" styleClass="primary-button" />
+    </HBox>
+    
+    <WebView fx:id="webView" prefHeight="600" prefWidth="800" />
 </VBox>

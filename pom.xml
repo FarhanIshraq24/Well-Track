@@ -12,10 +12,11 @@
 
     <properties>
         <!-- Java version for compatibility -->
-        <maven.compiler.source>19</maven.compiler.source>
-        <maven.compiler.target>19</maven.compiler.target>
-        <javafx.version>19</javafx.version>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <javafx.version>21.0.2</javafx.version>
         <jackson.version>2.15.2</jackson.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
@@ -23,21 +24,28 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>19</version> <!-- JavaFX 19 -->
+            <version>${javafx.version}</version>
         </dependency>
 
         <!-- JavaFX FXML -->
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
-            <version>19</version> <!-- JavaFX FXML -->
+            <version>${javafx.version}</version>
         </dependency>
 
         <!-- JavaFX Graphics -->
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-graphics</artifactId>
-            <version>19</version> <!-- JavaFX Graphics -->
+            <version>${javafx.version}</version>
+        </dependency>
+        
+        <!-- JavaFX WebView -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-web</artifactId>
+            <version>${javafx.version}</version>
         </dependency>
 
         <!-- Jackson for JSON Processing -->
@@ -78,8 +86,17 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.11.0</version>
                 <configuration>
-                    <source>19</source>
-                    <target>19</target>
+                    <release>21</release>
+                </configuration>
+            </plugin>
+
+            <!-- JavaFX Maven Plugin -->
+            <plugin>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>0.0.8</version>
+                <configuration>
+                    <mainClass>com.pharmacyfinder.PharmacyFinderApp</mainClass>
                 </configuration>
             </plugin>
 
@@ -89,8 +106,8 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.5.1</version>
                 <configuration>
-                    <!-- Replace with your actual main class -->
                     <mainClass>com.pharmacyfinder.PharmacyFinderApp</mainClass>
+                    <commandlineArgs>--add-opens javafx.controls/com.sun.javafx.scene.control.behavior=ALL-UNNAMED --add-opens javafx.controls/com.sun.javafx.scene.control=ALL-UNNAMED --add-opens javafx.base/com.sun.javafx.binding=ALL-UNNAMED --add-opens javafx.base/com.sun.javafx.event=ALL-UNNAMED --add-opens javafx.graphics/com.sun.javafx.stage=ALL-UNNAMED</commandlineArgs>
                 </configuration>
             </plugin>
 
