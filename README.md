@@ -206,3 +206,14 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 **🎉 Your Pharmacy Finder application is now ready to use!**
 
 For questions or support, please check the troubleshooting section or create an issue in the repository.
+
+
+farhanishraq@Farhans-MacBook-Air Welltrack % git push origin master
+Username for 'https://github.com': FarhanIshraq24
+Password for 'https://FarhanIshraq24@github.com': 
+remote: Permission to FarhanIshraq24/Well-Track.git denied to FarhanIshraq24.
+fatal: unable to access 'https://github.com/FarhanIshraq24/Well-Track.git/': The requested URL returned error: 403
+
+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
+
+
