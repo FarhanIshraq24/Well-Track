@@ -129,19 +129,23 @@ public class HelloController implements Initializable {
         return "<!DOCTYPE html>" +
                "<html><head><title>Welltrack</title>" +
                "<style>" +
-               "body { font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 0; background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); color: white; min-height: 100vh; display: flex; align-items: center; justify-content: center; }" +
-               ".container { text-align: center; padding: 60px 40px; background: rgba(255,255,255,0.1); border-radius: 20px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); max-width: 600px; }" +
-               "h1 { font-size: 3rem; margin-bottom: 1rem; font-weight: 700; }" +
-               "p { font-size: 1.1rem; line-height: 1.6; margin-bottom: 1rem; opacity: 0.9; }" +
-               ".loading { display: inline-block; width: 20px; height: 20px; border: 3px solid rgba(255,255,255,0.3); border-radius: 50%; border-top-color: white; animation: spin 1s ease-in-out infinite; }" +
+               "body { font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 0; background: linear-gradient(135deg, #16a34a 0%, #059669 50%, #047857 100%); color: white; min-height: 100vh; display: flex; align-items: center; justify-content: center; }" +
+               ".container { text-align: center; padding: 70px 50px; background: rgba(255,255,255,0.15); border-radius: 24px; backdrop-filter: blur(15px); border: 2px solid rgba(255,255,255,0.25); max-width: 650px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }" +
+               "h1 { font-size: 3.5rem; margin-bottom: 1.2rem; font-weight: 800; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); letter-spacing: -1px; }" +
+               "p { font-size: 1.2rem; line-height: 1.7; margin-bottom: 1.5rem; opacity: 0.95; }" +
+               ".subtitle { font-size: 1.4rem; font-weight: 600; margin-bottom: 2rem; opacity: 0.9; }" +
+               ".loading { display: inline-block; width: 24px; height: 24px; border: 3px solid rgba(255,255,255,0.3); border-radius: 50%; border-top-color: white; animation: spin 1.2s ease-in-out infinite; margin: 20px 0; }" +
                "@keyframes spin { to { transform: rotate(360deg); } }" +
+               ".feature { background: rgba(255,255,255,0.1); padding: 15px 20px; margin: 10px 0; border-radius: 12px; border-left: 4px solid rgba(255,255,255,0.5); }" +
                "</style></head>" +
                "<body><div class='container'>" +
-               "<h1>💊 Welltrack</h1>" +
-               "<p>Your Healthcare & Medicine Tracker</p>" +
+               "<h1>🌿 Welltrack</h1>" +
+               "<p class='subtitle'>Your Healthcare & Medicine Tracker</p>" +
                "<div class='loading'></div>" +
-               "<p>Loading your health dashboard...</p>" +
-               "<p>Track medications, find pharmacies, and manage your health journey with ease.</p>" +
+               "<p>Loading your personalized health dashboard...</p>" +
+               "<div class='feature'>💊 Track medications and dosages</div>" +
+               "<div class='feature'>🏥 Find nearby pharmacies instantly</div>" +
+               "<div class='feature'>📈 Monitor your wellness journey</div>" +
                "</div></body></html>";
     }
     
