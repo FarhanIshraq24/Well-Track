@@ -1,0 +1,8 @@
+/* src/main/resources/css/application.css */
+.root {
+    -fx-background-color: linear-gradient(to bottom right, #667eea, #764ba2);
+}
+
+.web-view {
+    -fx-background-color: transparent;
+}
