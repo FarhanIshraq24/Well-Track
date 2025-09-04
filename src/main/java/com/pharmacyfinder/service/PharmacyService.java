@@ -1,14 +1,14 @@
 package com.pharmacyfinder.service;
 
 import com.pharmacyfinder.model.Pharmacy;
+import com.pharmacyfinder.model.Location;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.CompletableFuture;
 
 public class PharmacyService {
@@ -78,10 +78,14 @@ public class PharmacyService {
                     String phone = tags.has("phone") ?
                             tags.get("phone").asText() : "Phone not available";
 
-                    // Mock availability check
-                    boolean hasStock = Math.random() > 0.3; // 70% chance of having stock
-
-                    pharmacies.add(new Pharmacy(name, address, phone, lat, lon, hasStock, medicine));
+                    // Mock availability check and create stock map
+                    Map<String, Boolean> stock = new HashMap<>();
+                    stock.put(medicine, Math.random() > 0.3); // 70% chance of having stock
+                    
+                    Location location = new Location(lat, lon, address);
+                    double distance = calculateDistance(0, 0, lat, lon); // Mock distance
+                    
+                    pharmacies.add(new Pharmacy(name, address, phone, location, stock, distance));
                 }
             }
         } catch (Exception e) {
@@ -94,20 +98,33 @@ public class PharmacyService {
     private List<Pharmacy> getMockPharmacies(double lat, double lng, String medicine) {
         List<Pharmacy> mockPharmacies = new ArrayList<>();
 
+        Map<String, Boolean> stock1 = new HashMap<>();
+        stock1.put(medicine, true);
+        Location loc1 = new Location(23.8103, 90.4125, "123 Main Street, Dhaka");
         mockPharmacies.add(new Pharmacy(
                 "City Pharmacy",
                 "123 Main Street, Dhaka",
                 "+880-123-456789",
-                23.8103, 90.4125, true, medicine
+                loc1, stock1, 0.5
         ));
 
+        Map<String, Boolean> stock2 = new HashMap<>();
+        stock2.put(medicine, false);
+        Location loc2 = new Location(23.8203, 90.4225, "456 Park Avenue, Dhaka");
         mockPharmacies.add(new Pharmacy(
                 "HealthCare Plus",
                 "456 Park Avenue, Dhaka",
                 "+880-987-654321",
-                23.8203, 90.4225, false, medicine
+                loc2, stock2, 1.2
         ));
 
         return mockPharmacies;
+    }
+    
+    private double calculateDistance(double lat1, double lon1, double lat2, double lon2) {
+        // Simple distance calculation (Haversine formula simplified)
+        double dlat = lat2 - lat1;
+        double dlon = lon2 - lon1;
+        return Math.sqrt(dlat * dlat + dlon * dlon) * 111; // Rough conversion to km
     }
 }

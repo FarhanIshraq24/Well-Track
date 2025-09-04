@@ -3,8 +3,8 @@
 # Welltrack - JavaFX Application Runner for macOS
 # Healthcare & Medicine Tracker with macOS optimizations
 
-echo "🚀 Starting Welltrack Application..."
-echo "💊 Healthcare & Medicine Tracker"
+echo "🚀 Starting WellTrack Application..."
+echo "💊 Royal Green Healthcare & Medicine Tracker"
 echo "Using Java version: $(java --version | head -n 1)"
 
 # Clean and compile first
@@ -22,6 +22,6 @@ mvn javafx:run \
     --add-opens=java.base/java.lang.reflect=ALL-UNNAMED \
     -Dapple.awt.application.appearance=system \
     -Dapple.laf.useScreenMenuBar=true \
-    -Dcom.apple.mrj.application.apple.menu.about.name=Welltrack"
+    -Dcom.apple.mrj.application.apple.menu.about.name=WellTrack"
 
-echo "✅ Welltrack application finished."
+echo "✅ WellTrack application finished."

@@ -21,7 +21,7 @@
                     <Insets top="20" right="30" bottom="20" left="30" />
                 </padding>
                 
-                <Label text="Welltrack" styleClass="app-title" />
+                <Label text="WellTrack" styleClass="app-title" />
                 
                 <Region HBox.hgrow="ALWAYS" />
                 
@@ -39,9 +39,9 @@
                 </padding>
                 
                 <Label text="Quick Search:" styleClass="search-label" />
-                <TextField promptText="Search for medicines, pharmacies, or health info..." 
-                          styleClass="search-field" prefWidth="400" />
-                <Button text="Search" styleClass="search-button" />
+                <TextField fx:id="searchField" promptText="Search for medicines, pharmacies, or health info..." 
+                          styleClass="search-field" prefWidth="400" onAction="#onSearch" />
+                <Button text="Search" styleClass="search-button" onAction="#onSearch" />
             </HBox>
         </VBox>
     </top>
@@ -68,7 +68,7 @@
             
             <Region HBox.hgrow="ALWAYS" />
             
-            <Label text="Welltrack v1.0 | Healthcare &amp; Medicine Tracker" styleClass="version-label" />
+            <Label text="WellTrack v1.0 | Healthcare &amp; Medicine Tracker" styleClass="version-label" />
         </HBox>
     </bottom>
     

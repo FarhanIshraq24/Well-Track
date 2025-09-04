@@ -1,24 +1,22 @@
 package com.pharmacyfinder.model;
 
+import java.util.Map;
+
 public class Pharmacy {
     private String name;
     private String address;
     private String phone;
-    private double latitude;
-    private double longitude;
-    private boolean hasStock;
-    private String searchedMedicine;
+    private Location location;
+    private Map<String, Boolean> stock;
     private double distance;
 
-    public Pharmacy(String name, String address, String phone,
-                    double latitude, double longitude, boolean hasStock, String searchedMedicine) {
+    public Pharmacy(String name, String address, String phone, Location location, Map<String, Boolean> stock, double distance) {
         this.name = name;
         this.address = address;
         this.phone = phone;
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.hasStock = hasStock;
-        this.searchedMedicine = searchedMedicine;
+        this.location = location;
+        this.stock = stock;
+        this.distance = distance;
     }
 
     // Getters and setters
@@ -31,18 +29,21 @@ public class Pharmacy {
     public String getPhone() { return phone; }
     public void setPhone(String phone) { this.phone = phone; }
 
-    public double getLatitude() { return latitude; }
-    public void setLatitude(double latitude) { this.latitude = latitude; }
+    public Location getLocation() { return location; }
+    public void setLocation(Location location) { this.location = location; }
 
-    public double getLongitude() { return longitude; }
-    public void setLongitude(double longitude) { this.longitude = longitude; }
+    public Map<String, Boolean> getStock() { return stock; }
+    public void setStock(Map<String, Boolean> stock) { this.stock = stock; }
 
-    public boolean hasStock() { return hasStock; }
-    public void setHasStock(boolean hasStock) { this.hasStock = hasStock; }
-
-    public String getSearchedMedicine() { return searchedMedicine; }
-    public void setSearchedMedicine(String searchedMedicine) { this.searchedMedicine = searchedMedicine; }
+    public boolean hasStock(String medicineName) {
+        return stock != null && stock.getOrDefault(medicineName, false);
+    }
 
     public double getDistance() { return distance; }
     public void setDistance(double distance) { this.distance = distance; }
+    
+    @Override
+    public String toString() {
+        return String.format("%s - %s (%.1f miles)", name, address, distance);
+    }
 }

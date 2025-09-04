@@ -9,8 +9,8 @@
     <artifactId>welltrack</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
-    <name>Welltrack</name>
-    <description>Healthcare &amp; Medicine Tracker - Find pharmacies, track medications, and manage your health journey</description>
+    <name>WellTrack</name>
+    <description>Royal Green Healthcare &amp; Medicine Tracker - Find pharmacies, track medications, and manage your health journey with style</description>
 
     <properties>
         <!-- Java version for compatibility -->
