@@ -127,27 +127,37 @@ public class HelloController implements Initializable {
     
     private String createFallbackHtml() {
         return "<!DOCTYPE html>" +
-               "<html><head><title>Pharmacy Finder</title>" +
+               "<html><head><title>Welltrack</title>" +
                "<style>" +
-               "body { font-family: Arial, sans-serif; margin: 40px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }" +
-               ".container { text-align: center; padding: 40px; background: rgba(255,255,255,0.1); border-radius: 10px; }" +
+               "body { font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 0; background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); color: white; min-height: 100vh; display: flex; align-items: center; justify-content: center; }" +
+               ".container { text-align: center; padding: 60px 40px; background: rgba(255,255,255,0.1); border-radius: 20px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); max-width: 600px; }" +
+               "h1 { font-size: 3rem; margin-bottom: 1rem; font-weight: 700; }" +
+               "p { font-size: 1.1rem; line-height: 1.6; margin-bottom: 1rem; opacity: 0.9; }" +
+               ".loading { display: inline-block; width: 20px; height: 20px; border: 3px solid rgba(255,255,255,0.3); border-radius: 50%; border-top-color: white; animation: spin 1s ease-in-out infinite; }" +
+               "@keyframes spin { to { transform: rotate(360deg); } }" +
                "</style></head>" +
                "<body><div class='container'>" +
-               "<h1>🏥 Pharmacy Finder</h1>" +
-               "<p>Welcome to the Pharmacy Finder application!</p>" +
-               "<p>The React frontend is loading...</p>" +
-               "<p>This JavaFX application will help you find nearby pharmacies with medicine availability.</p>" +
+               "<h1>💊 Welltrack</h1>" +
+               "<p>Your Healthcare & Medicine Tracker</p>" +
+               "<div class='loading'></div>" +
+               "<p>Loading your health dashboard...</p>" +
+               "<p>Track medications, find pharmacies, and manage your health journey with ease.</p>" +
                "</div></body></html>";
     }
     
     private String createErrorHtml(String error) {
         return "<!DOCTYPE html>" +
-               "<html><head><title>Error - Pharmacy Finder</title>" +
-               "<style>body { font-family: Arial, sans-serif; margin: 40px; background: #f44336; color: white; text-align: center; }</style></head>" +
-               "<body>" +
-               "<h1>⚠️ Error Loading Application</h1>" +
+               "<html><head><title>Error - Welltrack</title>" +
+               "<style>" +
+               "body { font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 0; background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); color: white; min-height: 100vh; display: flex; align-items: center; justify-content: center; }" +
+               ".container { text-align: center; padding: 40px; background: rgba(255,255,255,0.1); border-radius: 20px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); max-width: 500px; }" +
+               "h1 { font-size: 2rem; margin-bottom: 1rem; }" +
+               "p { font-size: 1rem; line-height: 1.6; margin-bottom: 1rem; opacity: 0.9; }" +
+               "</style></head>" +
+               "<body><div class='container'>" +
+               "<h1>⚠️ Error Loading Welltrack</h1>" +
                "<p>" + error + "</p>" +
-               "<p>Please ensure the React frontend is built properly.</p>" +
-               "</body></html>";
+               "<p>Please ensure the application components are properly configured.</p>" +
+               "</div></body></html>";
     }
 }

@@ -5,10 +5,12 @@
          http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.pharmacyfinder</groupId>
-    <artifactId>pharmacy-finder</artifactId>
+    <groupId>com.welltrack</groupId>
+    <artifactId>welltrack</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
+    <name>Welltrack</name>
+    <description>Healthcare &amp; Medicine Tracker - Find pharmacies, track medications, and manage your health journey</description>
 
     <properties>
         <!-- Java version for compatibility -->

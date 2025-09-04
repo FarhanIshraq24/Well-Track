@@ -1,9 +1,10 @@
 #!/bin/bash
 
-# JavaFX Application Runner for macOS
-# This script includes the necessary JVM arguments to prevent crashes on macOS
+# Welltrack - JavaFX Application Runner for macOS
+# Healthcare & Medicine Tracker with macOS optimizations
 
-echo "Starting Pharmacy Finder Application..."
+echo "🚀 Starting Welltrack Application..."
+echo "💊 Healthcare & Medicine Tracker"
 echo "Using Java version: $(java --version | head -n 1)"
 
 # Clean and compile first
@@ -21,6 +22,6 @@ mvn javafx:run \
     --add-opens=java.base/java.lang.reflect=ALL-UNNAMED \
     -Dapple.awt.application.appearance=system \
     -Dapple.laf.useScreenMenuBar=true \
-    -Dcom.apple.mrj.application.apple.menu.about.name=PharmacyFinder"
+    -Dcom.apple.mrj.application.apple.menu.about.name=Welltrack"
 
-echo "Application finished."
+echo "✅ Welltrack application finished."

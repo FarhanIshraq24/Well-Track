@@ -18,13 +18,13 @@ public class PharmacyFinderApp extends Application {
         scene.getStylesheets().add(getClass().getResource("/css/application.css").toExternalForm());
 
         // Set up the stage (window)
-        primaryStage.setTitle("Pharmacy Finder");
+        primaryStage.setTitle("Welltrack - Healthcare & Medicine Tracker");
         primaryStage.setScene(scene);
-        primaryStage.setMinWidth(800);
-        primaryStage.setMinHeight(600);
+        primaryStage.setMinWidth(900);
+        primaryStage.setMinHeight(700);
 
         // Set application icon (commented out until icon is available)
-        // primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/images/pharmacy-icon.png")));
+        // primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/images/welltrack-icon.png")));
 
         // Show the primary stage
         primaryStage.show();
