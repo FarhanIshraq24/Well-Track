@@ -235,4 +235,4 @@ public class MedicineRepositoryImpl implements MedicineRepository {
 //        }
 //bvhhhjjjguyvouvuybhfbvhfebnhjefrvb feruhvbfrhuruhbvuhv fhbvuhrvbrvhvbrfhjvbeuhv hv dhbvuhebvehfbvehbveufhvb ehuv dfuhv wejhvbwefhveuhfvb efhv eh
 //hvbdfhvb dfuhv dfuv fdsu dfsuhv dsfuhv dfhvsfvuhf vd dhbv dbhbhsihcbv
-//export default Pharhbvcfdhuvbeuhvbuebvebvehibvehuvbcshgcjhvjhv lvjh vc dscds hb
+//export default Pharhbvcfdhuvbeuhvbuebvebvehibvehuvbcshgsudivbbivcjhvjhv lvjh vc dscds hb
