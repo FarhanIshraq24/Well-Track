@@ -202,8 +202,10 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - **JavaFX** community for desktop application support
 
 ---
-
-**🎉 Your Pharmacy Finder application is now ready to use!**
+## project by
+220041237 Farhan Ishraq
+220041221 Aakash
+220041247 Shafi
 
 For questions or support, please check the troubleshooting section or create an issue in the repository.
 
