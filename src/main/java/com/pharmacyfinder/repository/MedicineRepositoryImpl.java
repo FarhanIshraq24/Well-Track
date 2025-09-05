@@ -225,7 +225,7 @@ public class MedicineRepositoryImpl implements MedicineRepository {
 //          </PharmacyName>
 //        <PharmacyAddress>📍 {pharmacy.address}</PharmacyAddress>
 //        <PharmacyPhone>📞 {pharmacy.phone}</PharmacyPhone>
-//        <StockStatus hasStock={pharmacy.hasStock}>
+//        <Stockj sjh sdsdc Status hasStock={pharmacy.hasStock}>
 //        {pharmacy.hasStock ? 'In Stock' : 'Out of Stock'}
 //        </StockStatus>
 //        </PharmacyCard>
