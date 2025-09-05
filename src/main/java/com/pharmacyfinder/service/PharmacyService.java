@@ -1,11 +1,14 @@
 package com.pharmacyfinder.service;
 
+import com.pharmacyfinder.config.SimpleDatabaseManager;
 import com.pharmacyfinder.model.Pharmacy;
 import com.pharmacyfinder.model.Location;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityTransaction;
 
 import java.io.IOException;
 import java.util.*;
@@ -15,16 +18,29 @@ public class PharmacyService {
 
     private final OkHttpClient httpClient;
     private final ObjectMapper objectMapper;
+    private final SimpleDatabaseManager databaseManager;
 
     public PharmacyService() {
         this.httpClient = new OkHttpClient();
         this.objectMapper = new ObjectMapper();
+        this.databaseManager = SimpleDatabaseManager.getInstance();
     }
 
     public CompletableFuture<List<Pharmacy>> findNearbyPharmacies(double lat, double lng, String medicine) {
         return CompletableFuture.supplyAsync(() -> {
+            System.out.println("🔍 Searching for pharmacies with medicine: " + medicine + " near (" + lat + ", " + lng + ")");
+            
+            // Query SQLite database
+            List<Map<String, Object>> dbResults = databaseManager.findNearbyPharmacies(lat, lng, medicine);
+            
+            if (!dbResults.isEmpty()) {
+                System.out.println("✅ Found " + dbResults.size() + " pharmacies from database");
+                return convertDatabaseResults(dbResults, medicine);
+            }
+            
+            // Fallback to external API if no database results
+            System.out.println("⚠️ No database results, trying external API...");
             try {
-                // Using Overpass API (OpenStreetMap) for pharmacy data
                 String query = buildOverpassQuery(lat, lng);
                 String url = "https://overpass-api.de/api/interpreter?data=" +
                         java.net.URLEncoder.encode(query, "UTF-8");
@@ -40,9 +56,11 @@ public class PharmacyService {
                     }
                 }
             } catch (IOException e) {
-                e.printStackTrace();
+                System.err.println("Error with external API: " + e.getMessage());
             }
-
+            
+            // Final fallback to mock data
+            System.out.println("⚠️ Using mock data as fallback");
             return getMockPharmacies(lat, lng, medicine);
         });
     }
@@ -119,6 +137,34 @@ public class PharmacyService {
         ));
 
         return mockPharmacies;
+    }
+    
+    /**
+     * Convert database results to Pharmacy objects for frontend
+     */
+    private List<Pharmacy> convertDatabaseResults(List<Map<String, Object>> dbResults, String searchedMedicine) {
+        return dbResults.stream().map(result -> {
+            // Create Location object
+            Location location = new Location(
+                (Double) result.get("latitude"),
+                (Double) result.get("longitude"),
+                (String) result.get("address")
+            );
+            
+            // Create stock map
+            Map<String, Boolean> stock = new HashMap<>();
+            stock.put(searchedMedicine, (Boolean) result.get("hasStock"));
+            
+            // Create new Pharmacy object with legacy constructor
+            return new Pharmacy(
+                (String) result.get("name"),
+                (String) result.get("address"),
+                (String) result.get("phone"),
+                location,
+                stock,
+                (Double) result.get("distance")
+            );
+        }).toList();
     }
     
     private double calculateDistance(double lat1, double lon1, double lat2, double lon2) {

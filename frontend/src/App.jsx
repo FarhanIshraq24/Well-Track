@@ -109,42 +109,83 @@ function App() {
     if (!userLocation || !medicine.trim()) return;
 
     setLoading(true);
+    console.log('🔍 Searching for:', medicine, 'at location:', userLocation);
+    
     try {
+      // Try to call the Java backend first
       if (window.javaAPI && window.javaAPI.findNearbyPharmacies) {
+        console.log('📞 Calling Java backend API...');
         const results = await window.javaAPI.findNearbyPharmacies(
           userLocation.latitude,
           userLocation.longitude,
           medicine
         );
+        console.log('✅ Received results from backend:', results);
         setPharmacies(results);
       } else {
-        // Mock data for development
+        console.log('⚠️ Java backend not available, using realistic mock data');
+        // More realistic mock data based on actual database
         const mockPharmacies = [
           {
             name: "City Pharmacy",
-            address: "123 Main Street, Dhaka",
-            phone: "+880-123-456789",
-            latitude: 23.8103,
-            longitude: 90.4125,
-            hasStock: true,
+            address: "123 Main Street, Dhanmondi, Dhaka-1205",
+            phone: "+880-2-9612345",
+            latitude: 23.7461,
+            longitude: 90.3742,
+            hasStock: medicine.toLowerCase().includes('paracetamol') || medicine.toLowerCase().includes('ibuprofen'),
+            searchedMedicine: medicine,
+            distance: 0.8
+          },
+          {
+            name: "Green Life Pharmacy",
+            address: "789 New Market Road, New Market, Dhaka-1205",
+            phone: "+880-2-9513456",
+            latitude: 23.7275,
+            longitude: 90.3854,
+            hasStock: medicine.toLowerCase().includes('paracetamol') || medicine.toLowerCase().includes('metformin'),
+            searchedMedicine: medicine,
+            distance: 1.2
+          },
+          {
+            name: "Square Pharmacy",
+            address: "654 Elephant Road, Kathalbagan, Dhaka-1205",
+            phone: "+880-2-9654321",
+            latitude: 23.7500,
+            longitude: 90.3889,
+            hasStock: medicine.toLowerCase().includes('paracetamol'),
             searchedMedicine: medicine,
             distance: 0.5
           },
           {
-            name: "HealthCare Plus",
-            address: "456 Park Avenue, Dhaka",
-            phone: "+880-987-654321",
-            latitude: 23.8203,
-            longitude: 90.4225,
-            hasStock: false,
+            name: "Apollo Pharmacy",
+            address: "147 Panthapath, Kawran Bazar, Dhaka-1215",
+            phone: "+880-2-9556677",
+            latitude: 23.7510,
+            longitude: 90.3931,
+            hasStock: medicine.toLowerCase().includes('omeprazole'),
             searchedMedicine: medicine,
-            distance: 1.2
+            distance: 1.0
           }
-        ];
+        ].filter(pharmacy => pharmacy.hasStock || Math.random() > 0.5);
+        
+        console.log('📊 Using mock pharmacies:', mockPharmacies);
         setPharmacies(mockPharmacies);
       }
     } catch (error) {
-      console.error('Error searching pharmacies:', error);
+      console.error('❌ Error searching pharmacies:', error);
+      // Fallback to minimal mock data on error
+      setPharmacies([
+        {
+          name: "Error - Using Fallback Data",
+          address: "Please check backend connection",
+          phone: "N/A",
+          latitude: 23.7461,
+          longitude: 90.3742,
+          hasStock: false,
+          searchedMedicine: medicine,
+          distance: 0
+        }
+      ]);
     } finally {
       setLoading(false);
     }
